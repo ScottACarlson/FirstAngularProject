@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People Search</title>
+		
+		<link href="bootstrap.css" rel="stylesheet">
+		
+		<script src="angular.min.js"></script>
+	</head>
+
+	<body ng-app="myApp" style="overflow-y: scroll">
+	
+		<nav class="navbar navbar-inverse navebar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="about.html"><people-list></people-list></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">List</a></li>
+						<li><a href="add.html">Map</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+	 	<bootstrap-navbar></bootstrap-navbar>		
+	
+		<div class="main" ng-controller="MainController">
+			
+			<div class="container">
+			
+				<!-- Add person-->
+				<div class="panel panel-default"> 
+					<div class="panel-heading">Add person:</div>
+					<div class="panel-body">
+				
+						<input class="form-inline" type="text" ng-model="scope.name" placeholder="Name">
+						<input class="form-inline" type="number" ng-model="scope.age" placeholder="Age" min="0">
+						<input type="radio" ng-model="scope.gender" value="M">Male  
+						<input type="radio" ng-model="scope.gender" value="F">Female
+						<button type="button" class="btn btn-sm btn-success"
+							ng-click="addItem(scope.name, 
+											scope.age, 
+											scope.gender)"
+											>Add</button>
+					</div>						
+				</div>	
+				
+				<!-- Sort people-->
+				<div class="panel panel-default"> 
+					<div class="panel-heading">Sort By:</div>
+					<div class="panel-body">
+				 
+						<label class="radio-inline"><input type="radio" ng-model="scope.sortMethod" value="name" ng-checked="true">Name</label>
+						<label class="radio-inline"><input type="radio" ng-model="scope.sortMethod" value="age" >Age</label>
+						<label class="radio-inline"><input type="radio" ng-model="scope.sortMethod" value="gender" >Gender</label><br/>
+					</div>
+				</div>
+			
+				<!-- search people-->
+				<div class="panel panel-default"> 
+					<div class="panel-heading">Search:</div>
+					<div class="panel-body">			
+						<p ng-init="scope.sortMethod = 'name'">
+							<input type="search" ng-model="scope.searchName" placeholder="Name">
+							<input type="search" ng-model="scope.searchAge" placeholder="Age">
+						</p>					
+					</div>
+				</div>	
+				
+				<hr>
+
+				<!--Person Table-->
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in sampleArray |
+							   filter: {name: scope.searchName, age:scope.searchAge}|
+							   orderBy: [scope.sortMethod, 'name', 'age', 'gender']">
+							<td>{{person.name}}</td>
+							<td>{{person.age}}</td>
+							<td>{{person.gender}}</td>
+						</tr>
+					</tbody>
+				</table>				
+			</div>
+
+		<script src="app.js"></script>
+		<script src="MainController.js"></script>
+	</body>
+</html>

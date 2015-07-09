@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>About</title>
+		
+		<link href="bootstrap.css" rel="stylesheet">
+		
+		<script src="angular.min.js"></script>
+	</head>
+	<body ng-app="myApp" style="overflow-y: scroll">
+	
+		<nav class="navbar navbar-inverse navebar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="about.html"><people-list></people-list></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">List</a></li>
+						<li><a href="add.html">Map</a></li>
+						<li class="active"><a href="#">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<div class="jumbotron">
+				<h1>People List</h1>
+				<p>This is a simple webpage that I made to test AngularJS as well as my html/css and bootstrap. To get started and see what it does hit the button below.</p>
+				<p>
+					<a class="btn btn-lg btn-primary" href="index.html" role="button">Try the people list &raquo;</a>
+				</p>
+			</div>
+		</div>
+		
+
+		<script src="app.js"></script>
+		<script src="MainController.js"></script>
+	</body>
+</html>
